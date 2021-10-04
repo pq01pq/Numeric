@@ -1,11 +1,13 @@
 package myjava;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import myjava.util.Numeric;
 import myjava.util.NumericList;
+import myjava.util.Numerics;
 
 /**
  * 
@@ -135,7 +137,7 @@ public class TestMain {
 			System.out.println(numeric + "\n");
 		}
 		
-		System.out.println("====================================================\n");
+		System.out.println("\n====================================================\n");
 		
 		// 사용 예시 : ipv6주소 숫자값 변환
 		
@@ -167,5 +169,22 @@ public class TestMain {
 		Numeric b = new Numeric("4");
 		Numeric c = a.square().add(b.square()).root();
 		System.out.println(c);
+		
+		System.out.println("\n====================================================\n");
+		
+		// 숫자 판별
+		List<Object> numbers = new ArrayList<>();
+		numbers.add(2);
+		numbers.add("7");
+		numbers.add(new Numeric(-3));
+		
+		Object o = new Object[][] {
+			{1, "10", "-3"},
+			{7, -1, new Object[] {"7", 9, "-2"} },
+			{numbers}
+		};
+		System.out.println(Numerics.areRealNumbers(o));
+		System.out.println(Numerics.areIntegers(o));
+		System.out.println(Numerics.areNaturalNumbers(o));
 	}
 }
